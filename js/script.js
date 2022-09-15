@@ -34,17 +34,9 @@ const app = new Vue(
         methods: {
             
              deleteTodo(index){
-                 const array = [];
-                 for(let i = 0; i < this.todos.length; i ++){
-                     if (i !== index){
-
-                        array.push(this.todos[i])
-
-                    }
-
-
-                 }
-                 this.todos = array;
+                
+                 const deleteTodos = this.todos.splice(index, 1)
+                
              },
 
             addTodo () {
@@ -57,13 +49,14 @@ const app = new Vue(
                 console.log(toDoToInsert)
                 if (toDoToInsert){
                     this.todos.push(toDoToInsert);
+                    this.newTodo = '';
                     
                 }else {
                     console.log('non hai inserito nulla')
 
                 } 
                 console.log(this.todos)
-                this.newTodo = '';
+                
             },
             changeTodo(i) {
                 this.todos[i].done =!this.todos[i].done
